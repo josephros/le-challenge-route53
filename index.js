@@ -39,6 +39,8 @@ Challenge.create = function (options) {
   // the file exists.
   if(opts.AWSConfigFile && fs.existsSync(opts.AWSConfigFile)){
     route53Config.loadFromPath(opts.AWSConfigFile);
+  } else if (opts.AWSConfig) {
+    route53Config.update(opts.AWSConfig);
   }
 
   return {
